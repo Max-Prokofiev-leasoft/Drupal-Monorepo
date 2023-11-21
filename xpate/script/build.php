@@ -2,8 +2,10 @@
 
 $parentDirectory = realpath(__DIR__.'/../../');
 
-const PLUGIN_NAME = 'cool-plugin';
-const BANK_NAME = 'ems';
+const PLUGIN_NAME = 'cool-plugin-for-xpate.v0.1';
+
+// BANK_NAME is name of bank folder
+const BANK_NAME = 'xpate';
 
 /**
  * @param  string  $sourceFolder1
