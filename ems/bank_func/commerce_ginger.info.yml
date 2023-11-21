@@ -1,5 +1,5 @@
-name: BANKNAME Payment Gateway
-description: Provides Commerce integration for the BANKNAME Gateway.
+name: EMS Payment Gateway
+description: Provides Commerce integration for the EMS Gateway.
 type: module
 
 core_version_requirement: ^9 || ^10
