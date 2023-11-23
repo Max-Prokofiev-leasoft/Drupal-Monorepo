@@ -2,10 +2,12 @@
 
 $parentDirectory = realpath(__DIR__.'/../../');
 
-const PLUGIN_NAME = 'cool-plugin';
 const BANK_NAME = 'ems';
+const PLUGIN_NAME = 'payment-plugin';
 
 /**
+ * Merge two folders into a destination folder.
+ *
  * @param  string  $sourceFolder1
  * @param  string  $sourceFolder2
  * @param  string  $destinationFolder
@@ -23,6 +25,9 @@ function mergeFolders(
 
     if (!is_dir($destinationFolder)) {
         mkdir($destinationFolder, 0777, true);
+    } else {
+        // Clear existing contents of $destinationFolder
+        clearDirectory($destinationFolder);
     }
 
     copyFolderContents($sourceFolder1, $destinationFolder);
@@ -30,6 +35,22 @@ function mergeFolders(
 }
 
 /**
+ * Recursively clear the contents of a directory.
+ *
+ * @param  string  $directory
+ *
+ * @return void
+ */
+function clearDirectory(string $directory): void {
+    $files = glob($directory . '/*');
+    foreach ($files as $file) {
+        is_dir($file) ? clearDirectory($file) : unlink($file);
+    }
+}
+
+/**
+ * Recursively copy the contents of one folder to another.
+ *
  * @param  string  $source
  * @param  string  $destination
  *
@@ -47,6 +68,11 @@ function copyFolderContents(
             $destFile = $destination.'/'.$file;
 
             if (is_dir($sourceFile)) {
+                // Create subdirectory in the destination if it doesn't exist
+                if (!is_dir($destFile)) {
+                    mkdir($destFile, 0777, true);
+                }
+
                 copyFolderContents($sourceFile, $destFile);
             } else {
                 copy($sourceFile, $destFile);
@@ -58,6 +84,8 @@ function copyFolderContents(
 }
 
 /**
+ * Create a zip archive from a source folder.
+ *
  * @param  string  $sourceFolder
  * @param  string  $zipFilename
  *
@@ -67,6 +95,11 @@ function createZipArchive(
   string $sourceFolder,
   string $zipFilename
 ): bool {
+    // Check if the zip file already exists and delete it
+    if (file_exists($zipFilename)) {
+        unlink($zipFilename);
+    }
+
     $zip = new ZipArchive();
     if ($zip->open($zipFilename, ZipArchive::CREATE) === true) {
         $files = new RecursiveIteratorIterator(
@@ -84,7 +117,6 @@ function createZipArchive(
         }
 
         $zip->close();
-
         return true;
     } else {
         return false;
@@ -94,7 +126,7 @@ function createZipArchive(
 $buildFolder = __DIR__.'/build';
 $coreDir = $parentDirectory.'/core';
 $bankFuncDir = $parentDirectory.'/'.BANK_NAME.'/bank_func';
-$zipFilename = $parentDirectory.'/'.BANK_NAME.'/'.PLUGIN_NAME.'.zip';
+$zipFilename = $parentDirectory.'/'.BANK_NAME.'/'.BANK_NAME.'-'.PLUGIN_NAME.'.zip';
 
 mergeFolders(
   $coreDir,

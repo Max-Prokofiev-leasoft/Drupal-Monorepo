@@ -1,4 +1,0 @@
-administer commerce_ginger:
-  title: 'Administer EMS Payment Gateway'
-  description: 'Perform administration tasks'
-  restrict access: TRUE
