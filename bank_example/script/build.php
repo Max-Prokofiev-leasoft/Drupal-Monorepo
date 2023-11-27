@@ -135,5 +135,5 @@ mergeFolders(
 );
 
 createZipArchive($buildFolder, $zipFilename);
-
+//test
 ?>
