@@ -21,14 +21,18 @@ jobs:
     - name: Determine the current version
       id: determine_version
       run: |
-        CURRENT_VERSION=$(git describe --tags --abbrev=0)
-        echo "Current version: $CURRENT_VERSION"
+        # Get the list of tags and find the latest version
+        ALL_TAGS=$(git tag -l)
+        LATEST_TAG=$(echo "$ALL_TAGS" | sort -V | tail -n 1)
+        
+        echo "Latest tag: $LATEST_TAG"
+        
         # Extract major, minor, and patch versions
-        IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
+        IFS='.' read -r -a VERSION_PARTS <<< "$LATEST_TAG"
         MAJOR_VERSION="${VERSION_PARTS[0]}"
         MINOR_VERSION="${VERSION_PARTS[1]}"
         PATCH_VERSION="${VERSION_PARTS[2]}"
-
+        
         # Increment minor version
         ((MINOR_VERSION++))
         NEW_VERSION="$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION"
@@ -41,7 +45,7 @@ jobs:
       with:
         files: |
           $(find . -type f -size +1c)
-        token: ${{ secrets.TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         tag_name: ${{ steps.determine_version.outputs.NEW_VERSION }}
 
     - name: Get the URL of the created release
