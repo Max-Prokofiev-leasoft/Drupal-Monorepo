@@ -55,7 +55,7 @@ jobs:
         files: |
           $(find . -type f -size +1c)
         token: ${{ secrets.TOKEN }}
-        tag_name: v1.2.0
+        tag_name: ${{ steps.determine_version.outputs.NEW_VERSION }}
 
     - name: Get the URL of the created release
       run: echo "Release URL - ${{ steps.create_release.outputs.upload_url }}"
