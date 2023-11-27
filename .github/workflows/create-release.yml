@@ -21,21 +21,30 @@ jobs:
     - name: Determine the current version
       id: determine_version
       run: |
-        # Get the list of tags and find the latest version
+        # Get the list of tags
         ALL_TAGS=$(git tag -l)
-        LATEST_TAG=$(echo "$ALL_TAGS" | sort -V | tail -n 1)
+
+        # Check if there are any tags
+        if [ -z "$ALL_TAGS" ]; then
+          # If no tags, start from version 0.1.0
+          NEW_VERSION="0.1.0"
+        else
+          # Find the latest version
+          LATEST_TAG=$(echo "$ALL_TAGS" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
+          
+          echo "Latest tag: $LATEST_TAG"
+          
+          # Extract major, minor, and patch versions
+          IFS='.' read -r -a VERSION_PARTS <<< "$(echo "$LATEST_TAG" | sed 's/^v//')"
+          MAJOR_VERSION="${VERSION_PARTS[0]}"
+          MINOR_VERSION="${VERSION_PARTS[1]}"
+          PATCH_VERSION="${VERSION_PARTS[2]}"
+          
+          # Increment minor version
+          ((MINOR_VERSION++))
+          NEW_VERSION="v$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION"
+        fi
         
-        echo "Latest tag: $LATEST_TAG"
-        
-        # Extract major, minor, and patch versions
-        IFS='.' read -r -a VERSION_PARTS <<< "$LATEST_TAG"
-        MAJOR_VERSION="${VERSION_PARTS[0]}"
-        MINOR_VERSION="${VERSION_PARTS[1]}"
-        PATCH_VERSION="${VERSION_PARTS[2]}"
-        
-        # Increment minor version
-        ((MINOR_VERSION++))
-        NEW_VERSION="$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION"
         echo "New version: $NEW_VERSION"
         echo "::set-output name=NEW_VERSION::$NEW_VERSION"
 
@@ -45,7 +54,7 @@ jobs:
       with:
         files: |
           $(find . -type f -size +1c)
-        token: ${{ secrets.TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         tag_name: ${{ steps.determine_version.outputs.NEW_VERSION }}
 
     - name: Get the URL of the created release
