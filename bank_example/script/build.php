@@ -136,4 +136,5 @@ mergeFolders(
 
 createZipArchive($buildFolder, $zipFilename);
 //test
+//22
 ?>
