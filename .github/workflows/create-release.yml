@@ -1,4 +1,4 @@
-name: Create Release on Main Push
+name: Create release on Main Push
 
 on:
   push:
@@ -51,7 +51,7 @@ jobs:
           
           echo "::set-output name=NEW_VERSION::$NEW_VERSION"
 
-      - name: Create Release
+      - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
@@ -61,4 +61,4 @@ jobs:
           tag_name: ${{ steps.determine_version.outputs.NEW_VERSION }}
 
       - name: Get the URL of the created release
-        run: echo "Release URL - ${{ steps.create_release.outputs.upload_url }}"
+        run: echo "release URL - ${{ steps.create_release.outputs.upload_url }}"

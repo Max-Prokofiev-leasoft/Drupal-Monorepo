@@ -37,7 +37,7 @@ class GingerMail
    */
   public function sendMail($params = array()) {
 
-    // Build mail vars.
+    // merge mail vars.
     $module = 'commerce_ginger';
     $key = 'commerce_ginger';
     $lang_code = $this->current_user->getPreferredLangcode();
