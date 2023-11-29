@@ -1,4 +1,4 @@
-PLUGIN_NAME := ems-payment-plugin
+PLUGIN_NAME := BANKNAME-payment-plugin
 
 CORE_DIR := ../../../core
 BANK_FUNC_DIR := ../../bank_func
@@ -11,6 +11,8 @@ merge_and_archive:
 	mkdir -p "$(ARCHIVE_DIR)"
 	rsync -av --exclude="build" "$(CORE_DIR)/" "$(ARCHIVE_DIR)/"
 	rsync -av --exclude="build" "$(BANK_FUNC_DIR)/" "$(ARCHIVE_DIR)/"
+
+	mkdir -p ../../plugin/
 
 	@echo "Creating ZIP archive..."
 	cd "$(BUILD_DIR)" && zip -r "$(ZIP_FILENAME)" "$(PLUGIN_NAME)/"

@@ -1,8 +1,8 @@
 PLUGIN_NAME := BANKNAME-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/Drupal-Monorepo
-TAG := v0.5.2
+TAG := v1.0.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
-RELEASE_NAME := Release BANKNAME $(TAG)
+RELEASE_NAME := release BANKNAME $(TAG)
 
 release:
 	@echo "Creating GitHub release..."

@@ -1,8 +1,8 @@
-PLUGIN_NAME := xpate-payment-plugin
+PLUGIN_NAME := BANKNAME-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/Drupal-Monorepo
-TAG := v1.0.0
+TAG := v0.9.5
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
-RELEASE_NAME := Release XPATE $(TAG)
+RELEASE_NAME := Release BANKNAME $(TAG)
 
 release:
 	@echo "Creating GitHub release..."
