@@ -1,9 +1,6 @@
 name: Create Release on Main Push
 
 on:
-  push:
-    branches:
-      - 
 
 jobs:
   create_release:
