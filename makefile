@@ -17,6 +17,21 @@ detect_changes:
                 echo "Зміни виявлені в папці $$dir (release):"; \
                 make -C $$dir/script/release -f makefile; \
             fi; \
+            if [ "$$dir" = "core" ]; then \
+                banks=$$(find . -maxdepth 1 -type d -not -name "core"); \
+                for bank in $$banks; do \
+                    makefile_bank_merge=$$bank/script/merge/makefile; \
+                    if [ -f $$makefile_bank_merge ]; then \
+                        echo "Зміни виявлені в папці $$bank (merge):"; \
+                        make -C $$bank/script/merge -f makefile; \
+                    fi; \
+                    makefile_bank_release=$$bank/script/release/makefile; \
+                    if [ -f $$makefile_bank_release ]; then \
+                        echo "Зміни виявлені в папці $$bank (release):"; \
+                        make -C $$bank/script/release -f makefile; \
+                    fi; \
+                done \
+            fi; \
             dir=$$(dirname $$dir); \
         done \
     done

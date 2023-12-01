@@ -2,6 +2,7 @@
 
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Component\Utility\Html;
+
 /**
  * @file
  * Contains commerce_ginger.module.
