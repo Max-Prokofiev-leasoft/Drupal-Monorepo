@@ -2,7 +2,7 @@ PLUGIN_NAME := ems-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/GPEv2test1
 TAG := v0.0.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
-RELEASE_NAME := release PRIVAT  $(TAG)
+RELEASE_NAME := Release EMS plugin  $(TAG)
 
 release:
 	@echo "Creating GitHub release for $(GITHUB_REPO)..."
