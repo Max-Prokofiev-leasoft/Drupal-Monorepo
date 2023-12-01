@@ -1,13 +1,20 @@
-BANKS := ems xpate
+BANKS := bank_example ems xpate core
 
-.PHONY: check-changes
+.PHONY: check-changes $(BANKS) merge release
 
-check-changes:
+check-changes: $(BANKS)
+
+$(BANKS):
+	@if [ -n "$$(git -C $@ status -s)" ]; then \
+        echo "Changes detected in $@, running Makefile..."; \
+        $(MAKE) -C $@/script/merge; \
+        $(MAKE) -C $@/script/release; \
+    else \
+        echo "No changes in $@."; \
+    fi
+
+merge release:
 	@for bank in $(BANKS); do \
-        if [ -n "$$(git -C $$bank status -s)" ]; then \
-            echo "Changes detected in $$bank, running Makefile..."; \
-            $(MAKE) -C $$bank; \
-        else \
-            echo "No changes in $$bank."; \
-        fi; \
+        echo "Running Makefile in $$bank/script/$@..."; \
+        $(MAKE) -C $$bank/script/$@; \
     done
