@@ -1,5 +1,5 @@
 PLUGIN_NAME := BANKNAME-payment-plugin
-GITHUB_REPO := Max-Prokofiev-leasoft/test1
+GITHUB_REPO := Max-Prokofiev-leasoft/GPEv2test1
 TAG := v0.2.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 RELEASE_NAME := release PRIVAT  $(TAG)
