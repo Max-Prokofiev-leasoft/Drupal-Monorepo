@@ -16,7 +16,7 @@ class Bankconfig
 
   const PLATFORM_NAME = 'Drupal10';
 
-  const PLUGIN_NAME = 'ems-online-drupal10';
+  const PLUGIN_NAME = 'xpate-online-drupal10';
 
   const ENDPOINT = 'https://api.dev.gingerpayments.com';
 

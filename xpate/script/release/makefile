@@ -1,4 +1,4 @@
-PLUGIN_NAME := BANKNAME-payment-plugin
+PLUGIN_NAME := xpate-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/GPEv2test2
 TAG := v0.2.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
