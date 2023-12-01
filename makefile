@@ -4,12 +4,21 @@ CHANGED_FILES := $(shell git diff --name-only)
 
 # Оголошення правила для детекції змін
 detect_changes:
-	@for dir in $(SRC_DIR); do \
-        changed_files=$$(git diff --name-only $$dir); \
-        if [ -n "$$changed_files" ]; then \
-            echo "Зміни виявлені в папці $$dir:"; \
-            echo "$$changed_files"; \
-        fi \
+	@for file in $(CHANGED_FILES); do \
+        dir=$$(dirname $$file); \
+        while [ "$$dir" != "." ]; do \
+            makefile_merge=$$dir/script/merge/makefile; \
+            makefile_release=$$dir/script/release/makefile; \
+            if [ -f $$makefile_merge ]; then \
+                echo "Зміни виявлені в папці $$dir (merge):"; \
+                make -C $$dir/script/merge -f makefile; \
+            fi; \
+            if [ -f $$makefile_release ]; then \
+                echo "Зміни виявлені в папці $$dir (release):"; \
+                make -C $$dir/script/release -f makefile; \
+            fi; \
+            dir=$$(dirname $$dir); \
+        done \
     done
 
 # Оголошення основного завдання
