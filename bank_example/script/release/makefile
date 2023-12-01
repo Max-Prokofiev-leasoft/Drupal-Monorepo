@@ -1,6 +1,6 @@
 PLUGIN_NAME := bank_example-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/test1
-TAG := v0.5.2
+TAG := v3.5.2
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 RELEASE_NAME := release PRIVAT24  $(TAG)
 

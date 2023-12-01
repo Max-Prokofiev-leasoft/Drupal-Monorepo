@@ -1,6 +1,6 @@
 PLUGIN_NAME := xpate-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/GPEv2test2
-TAG := v2.4.1
+TAG := v3.4.1
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 RELEASE_NAME := Release Xpate  $(TAG)
 
