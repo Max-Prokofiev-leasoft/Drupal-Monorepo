@@ -1,6 +1,6 @@
 PLUGIN_NAME := ems-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/GPEv2test1
-TAG := v0.0.0
+TAG := v1.2.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 RELEASE_NAME := Release EMS plugin  $(TAG)
 
