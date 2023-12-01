@@ -1,7 +1,7 @@
 BANKS := bank_example ems xpate core
 TARGETS := merge release
 
-.PHONY: check-changes $(BANKS) $(foreach bank,$(BANKS),$(TARGETS))
+.PHONY: check-changes $(BANKS)
 
 check-changes: $(BANKS)
 
@@ -14,6 +14,8 @@ $(BANKS):
         echo "No changes in $@."; \
     fi
 
-$(foreach bank,$(BANKS),$(TARGETS)):
-	@echo "Running Makefile in $(bank)/script/$@...";
-	@$(MAKE) -C $(bank)/script/$@;
+$(foreach bank,$(BANKS),$(foreach target,$(TARGETS),$(bank)_$(target))):
+	@echo "Running Makefile in $(subst _,/script/,$@)...";
+	@$(MAKE) -C $(subst _,/script/,$@);
+
+merge release: $(foreach bank,$(BANKS),$(foreach target,$(TARGETS),$(bank)_$(target)))

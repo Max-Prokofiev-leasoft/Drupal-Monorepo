@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 class Bankconfig
 {
 
-  const PLATFORM_NAME = 'Drupal10';
+  const PLATFORM_NAME = 'Drupal101';
 
   const PLUGIN_NAME = 'bank-example-Drupal10';
 
