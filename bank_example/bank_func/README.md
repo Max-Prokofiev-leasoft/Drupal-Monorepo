@@ -1,4 +1,4 @@
-# BANKNAME plugin for Drupal 9/10 and Commerce 2.x
+# BANKNAM plugin for Drupal 9/10 and Commerce 2.x
 
 ## About
 This is the BANKNAME plugin.
