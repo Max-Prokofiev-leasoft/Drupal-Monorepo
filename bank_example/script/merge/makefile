@@ -1,16 +1,19 @@
 PLUGIN_NAME := bank_example-payment-plugin
-
 CORE_DIR := ../../../core
 BANK_FUNC_DIR := ../../bank_func
 BUILD_DIR := ./build
 ZIP_FILENAME := ../../../plugin/$(PLUGIN_NAME).zip
 ARCHIVE_DIR := $(BUILD_DIR)/$(PLUGIN_NAME)
+REPLACEMENT := GINGER
 
 merge_and_archive:
 	@echo "Merging folders..."
 	mkdir -p "$(ARCHIVE_DIR)"
 	rsync -av --exclude="build" "$(CORE_DIR)/" "$(ARCHIVE_DIR)/"
 	rsync -av --exclude="build" "$(BANK_FUNC_DIR)/" "$(ARCHIVE_DIR)/"
+
+	@echo "Replacing text in files in bank_func and its subdirectories..."
+	find "$(ARCHIVE_DIR)/bank_func" -type f -exec sed -i 's/BANKNAME/$(REPLACEMENT)/g' {} +
 
 	mkdir -p ../../plugin/
 

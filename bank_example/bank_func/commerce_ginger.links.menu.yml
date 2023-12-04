@@ -6,7 +6,7 @@ commerce_ginger.form:
 
 commerce.store_configuration:
   type: config_object
-  label: 'EMS config'
+  label: 'BANKNAME config'
   mapping:
     apikey:
       type: text

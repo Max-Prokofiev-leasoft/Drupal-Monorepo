@@ -16,7 +16,7 @@ class Bankconfig
 
   const PLATFORM_NAME = 'Drupal10';
 
-  const PLUGIN_NAME = 'privat24-Drupal10';
+  const PLUGIN_NAME = 'BANKNAME-Drupal10';
 
   const ENDPOINT = 'https://api.dev.gingerpayments.com';
 
