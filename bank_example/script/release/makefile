@@ -2,7 +2,7 @@ PLUGIN_NAME := bank_example-payment-plugin
 GITHUB_REPO := Max-Prokofiev-leasoft/test1
 TAG := v1.0.0
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
-RELEASE_NAME := release PRIVAT24  $(TAG)
+RELEASE_NAME := release BANKNAME  $(TAG)
 
 release:
 	@echo "Creating GitHub release for $(GITHUB_REPO)..."
