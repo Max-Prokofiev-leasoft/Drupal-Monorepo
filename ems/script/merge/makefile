@@ -1,4 +1,4 @@
-PLUGIN_NAME := bank_example-payment-plugin
+PLUGIN_NAME := ems-payment-plugin
 CORE_DIR := ../../../core
 BANK_FUNC_DIR := ../../bank_func
 BUILD_DIR := ./build
