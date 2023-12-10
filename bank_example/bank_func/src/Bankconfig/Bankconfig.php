@@ -61,6 +61,7 @@ class Bankconfig
     return self::ENDPOINT;
   }
 
+
   /**
    * @return string
    */
