@@ -2,6 +2,9 @@
 
 namespace Drupal\commerce_ginger\Bankconfig;
 
+use Drupal\commerce_ginger\ComponentRegister;
+use Drupal\commerce_ginger\Interface\GetIssuersStrategy;
+use Drupal\commerce_ginger\Strategies\DefaultGetIssuers;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -79,5 +82,10 @@ class Bankconfig
 
     return $link;
   }
+
+    static public function registerStrategies()
+    {
+        ComponentRegister::register(GetIssuersStrategy::class,new DefaultGetIssuers());
+    }
 
 }

@@ -2,6 +2,9 @@
 
 namespace Drupal\commerce_ginger\Bankconfig;
 
+use Drupal\commerce_ginger\ComponentRegister;
+use Drupal\commerce_ginger\Interface\GetIssuersStrategy;
+use Drupal\commerce_ginger\Strategies\DefaultGetIssuers;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -16,11 +19,11 @@ class Bankconfig
 
   const PLATFORM_NAME = 'Drupal10';
 
-  const PLUGIN_NAME = 'xpate-online-drupal10';
+  const PLUGIN_NAME = 'BANKNAME-Drupal10';
 
   const ENDPOINT = 'https://api.dev.gingerpayments.com';
 
-  const LOGGER_CHANEL = 'ginger_plugin';
+  const LOGGER_CHANEL = 'example_plugin';
 
   /**
    * @return mixed|string
@@ -79,5 +82,10 @@ class Bankconfig
 
     return $link;
   }
+
+    static public function registerStrategies()
+    {
+        ComponentRegister::register(GetIssuersStrategy::class,new DefaultGetIssuers());
+    }
 
 }

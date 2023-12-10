@@ -2,6 +2,8 @@
 
 namespace Drupal\commerce_ginger\Plugin\Commerce\PaymentGateway;
 
+use Drupal\commerce_ginger\ComponentRegister;
+use Drupal\commerce_ginger\Interface\GetIssuersStrategy;
 use Drupal\commerce_ginger\Plugin\Commerce\PaymentGateway\BaseOffsitePaymentGateway;
 
 /**
@@ -20,7 +22,7 @@ class Ideal extends BaseOffsitePaymentGateway
 {
   public function prepareForm(array $form)
   {
-    $issuers = $this->builderRedefiner->getClient()->getIdealIssuers()->toArray();
+    $issuers = ComponentRegister::get(GetIssuersStrategy::class)->getIssuers();
 
     $form['issuers'] = [
       '#type' => 'select',
