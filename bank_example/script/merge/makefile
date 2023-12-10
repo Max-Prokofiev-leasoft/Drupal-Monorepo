@@ -12,7 +12,7 @@ merge_and_archive:
 
 	@echo "Replacing text in files in bank_func and its subdirectories..."
 	@echo "You can replace the finding word in 's/WORD/'"
-	find "$(BANK_FUNC_DIR)" -type f -exec sed -i 's/Xpate/$(REPLACEMENT)/g' {} +
+	find "$(BANK_FUNC_DIR)" -type f -exec sed -i 's/BANKNAME/$(REPLACEMENT)/g' {} +
 
 	rsync -av --exclude="build" "$(CORE_DIR)/" "$(ARCHIVE_DIR)/"
 	rsync -av --exclude="build" "$(BANK_FUNC_DIR)/" "$(ARCHIVE_DIR)/"

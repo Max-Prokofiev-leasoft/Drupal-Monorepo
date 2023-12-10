@@ -75,7 +75,6 @@ class AbstractPayment extends PaymentOffsiteForm
     if ($paymentForm) {
       return $paymentForm;
     }
-
     $order = $this->startTransaction($form, $form_state);
     $form = $this->helper->setBanktransferForm($form, $order->toArray());
 
