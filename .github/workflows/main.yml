@@ -22,17 +22,9 @@ jobs:
         for file in ${{ steps.changes.outputs.files }}; do
           if [[ "$file" != "Makefile" ]]; then
             echo "Current directory: $(pwd)"
-            make -C "$(dirname $file)"
+            cd script/merge
+            make
+            cd -
+            break
           fi
         done
-
-    - name: Build in script/merge
-      run: |
-        echo "Current directory: $(pwd)"
-        make -C script/merge
-
-    - name: Build in script/release/make
-      if: contains(steps.changes.outputs.files, 'Makefile')
-      run: |
-        echo "Current directory: $(pwd)"
-        make -C script/release/make
