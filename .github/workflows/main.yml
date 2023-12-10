@@ -1,7 +1,9 @@
 name: Makefile CI
 
 on:
-  workflow_dispatch: # Тригер на виклик з веб-інтерфейсу або API
+  push:
+    paths:
+      - '**/*' # Спостерігати за всіма змінами у репозиторії
 
 jobs:
   build:
@@ -11,5 +13,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Determine changes
+      id: changes
+      run: echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
+
     - name: Build with Makefile
-      run: make
+      run: |
+        for file in ${{ steps.changes.outputs.files }}; do
+          if [[ "$file" != "Makefile" ]]; then
+            make -C "$(dirname $file)/make"
+          fi
+        done
+
+    - name: Build in script/merge/make
+      run: make -C script/merge/make
+
+    - name: Build in script/release/make
+      if: 'Makefile' in steps.changes.outputs.files
+      run: make -C script/release/make
