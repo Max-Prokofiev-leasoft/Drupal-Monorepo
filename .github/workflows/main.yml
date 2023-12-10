@@ -25,8 +25,8 @@ jobs:
           fi
         done
 
-    - name: Build in script/merge/make
-      run: make -C script/merge/make
+    - name: Build in script/merge
+      run: make -C script/merge
 
     - name: Build in script/release/make
       if: contains(steps.changes.outputs.files, 'Makefile')
