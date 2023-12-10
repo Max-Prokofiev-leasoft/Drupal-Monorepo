@@ -21,7 +21,7 @@ jobs:
       run: |
         for file in ${{ steps.changes.outputs.files }}; do
           if [[ "$file" != "Makefile" ]]; then
-            make -C "$(dirname $file)/make"
+            make -C "$(dirname $file)"
           fi
         done
 
