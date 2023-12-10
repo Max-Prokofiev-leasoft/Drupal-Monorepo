@@ -29,5 +29,5 @@ jobs:
       run: make -C script/merge/make
 
     - name: Build in script/release/make
-      if: steps.changes.outputs.files =~ 'Makefile'
+      if: contains(steps.changes.outputs.files, 'Makefile')
       run: make -C script/release/make
