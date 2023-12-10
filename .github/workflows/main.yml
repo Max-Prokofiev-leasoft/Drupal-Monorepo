@@ -25,6 +25,9 @@ jobs:
             cd script/merge
             make
             cd -
+            cd script/release
+            make
+            cd -
             break
           fi
         done
