@@ -1,0 +1,15 @@
+name: Makefile CI
+
+on:
+  workflow_dispatch: # Тригер на виклик з веб-інтерфейсу або API
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build with Makefile
+      run: make
