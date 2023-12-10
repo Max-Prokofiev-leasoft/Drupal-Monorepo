@@ -3,6 +3,7 @@
 namespace Drupal\commerce_ginger\Controller;
 
 use Drupal\commerce\Response\NeedsRedirectException;
+use Drupal\commerce_ginger\Builder\OrderBuilder;
 use Drupal\commerce_ginger\Redefiner\BuilderRedefiner;
 use Drupal\commerce_ginger\Helper\OrderHelper;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -14,10 +15,7 @@ class Webhook
 
   use StringTranslationTrait;
 
-  /**
-   * @var BuilderRedefiner
-   */
-  private BuilderRedefiner $builderRedefiner;
+  private $builderRedefiner;
 
   /**
    * @var Client
@@ -26,7 +24,7 @@ class Webhook
 
   public function __construct()
   {
-    $this->builderRedefiner = new BuilderRedefiner();
+    $this->builderRedefiner = new OrderBuilder();
     $this->client = $this->builderRedefiner->getClient();
   }
 

@@ -1,16 +1,16 @@
-# BANKNAME plugin for Drupal 9/10 and Commerce 2.x
+# EMS plugin for Drupal 9/10 and Commerce 2.x
 
 ## About
-This is the BANKNAME plugin.
+This is the EMS plugin.
 
-BANKNAME helps entrepreneurs with the best, smartest and most efficient payment systems. Both
+EMS helps entrepreneurs with the best, smartest and most efficient payment systems. Both
 in your physical store and online in your webshop. With a wide range of payment methods
 you can serve every customer.
 
-Why BANKNAME?
+Why EMS?
 
-Via the BANKNAME website you can create a free test account online 24/7 and try out the online
-payment solution. BANKNAME's online solution also offers the option of sending payment links and
+Via the EMS website you can create a free test account online 24/7 and try out the online
+payment solution. EMS's online solution also offers the option of sending payment links and
 accepting QR payments.
 
 The ideal online payment page for your webshop:

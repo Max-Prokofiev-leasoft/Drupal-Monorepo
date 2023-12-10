@@ -4,6 +4,7 @@ namespace Drupal\commerce_ginger\Plugin\Commerce\PaymentGateway;
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
+use Drupal\commerce_ginger\Builder\OrderBuilder;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\PaymentMethodTypeManager;
@@ -67,7 +68,7 @@ class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements Sup
     MinorUnitsConverterInterface $minor_units_converter = NULL
   ) {
     $this->webhook = new Webhook();
-    $this->builderRedefiner = new BuilderRedefiner();
+    $this->builderRedefiner = new OrderBuilder();
     $this->helper = new Helper();
 
     parent::__construct(

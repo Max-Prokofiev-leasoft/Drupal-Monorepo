@@ -6,6 +6,7 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 use Drupal;
 use Drupal\commerce\Response\NeedsRedirectException;
+use Drupal\commerce_ginger\Builder\OrderBuilder;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
@@ -47,15 +48,12 @@ class AbstractPayment extends PaymentOffsiteForm
    */
   public $helper;
 
-  /**
-   * @var BuilderRedefiner
-   */
   public $builderRedefiner;
 
   public function __construct()
   {
     $this->helper = new Helper();
-    $this->builderRedefiner = new BuilderRedefiner();
+    $this->builderRedefiner = new OrderBuilder();
     $this->client = $this->builderRedefiner->getClient();
   }
 
