@@ -1,10 +1,12 @@
-PLUGIN_NAME := bank_example-payment-plugin
-CORE_DIR := ../../../core
-BANK_FUNC_DIR := ../../bank_func
+PLUGIN_NAME := EMS-payment-plugin
+CORE_DIR := ../../core
+BANK_FUNC_DIR := ../bank_func
 BUILD_DIR := ./build
-ZIP_FILENAME := ../../../plugin/$(PLUGIN_NAME).zip
+ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 ARCHIVE_DIR := $(BUILD_DIR)/$(PLUGIN_NAME)
-REPLACEMENT := BANKNAME
+
+BANK_NAME := EMS
+REPLACEMENT_BANK := BANKNAME
 
 merge_and_archive:
 	@echo "Merging folders..."
@@ -12,12 +14,12 @@ merge_and_archive:
 
 	@echo "Replacing text in files in bank_func and its subdirectories..."
 	@echo "You can replace the finding word in 's/WORD/'"
-	find "$(BANK_FUNC_DIR)" -type f -exec sed -i 's/BANKNAME/$(REPLACEMENT)/g' {} +
+	find "$(BANK_FUNC_DIR)" -type f -exec sed -i 's/$(REPLACEMENT_BANK)/$(BANK_NAME)/g' {} +
 
 	rsync -av --exclude="build" "$(CORE_DIR)/" "$(ARCHIVE_DIR)/"
 	rsync -av --exclude="build" "$(BANK_FUNC_DIR)/" "$(ARCHIVE_DIR)/"
 
-	mkdir -p ../../plugin/
+	mkdir -p ../plugin/
 
 	@echo "Creating ZIP archive..."
 	cd "$(BUILD_DIR)" && zip -r "$(ZIP_FILENAME)" "$(PLUGIN_NAME)/"
