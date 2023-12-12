@@ -31,7 +31,7 @@ class Bankconfig
   public static function getPluginVersion(): mixed
   {
     $pluginInfo = Yaml::parseFile(
-      DRUPAL_ROOT.'/modules/contrib/ginger_drupal_commerce/commerce_ginger.info.yml'
+      DRUPAL_ROOT.'/modules/EMS-payment-plugin/commerce_ginger.info.yml'
     );
 
     return $pluginInfo['version'] ?? '1.0.0';

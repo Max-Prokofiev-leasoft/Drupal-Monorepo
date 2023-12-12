@@ -9,6 +9,8 @@ BANK_NAME := EMS
 REPLACEMENT_BANK := BANKNAME
 
 merge_and_archive:
+	@echo "Cleaning up existing build directory..."
+	rm -rf "$(BUILD_DIR)"
 	@echo "Merging folders..."
 	mkdir -p "$(ARCHIVE_DIR)"
 
@@ -19,10 +21,13 @@ merge_and_archive:
 	rsync -av --exclude="build" "$(CORE_DIR)/" "$(ARCHIVE_DIR)/"
 	rsync -av --exclude="build" "$(BANK_FUNC_DIR)/" "$(ARCHIVE_DIR)/"
 
+	@echo "Deleting existing 'plugin' folder if it exists..."
+	rm -rf "../plugin"
+
 	mkdir -p ../plugin/
 
 	@echo "Creating ZIP archive..."
 	cd "$(BUILD_DIR)" && zip -r "$(ZIP_FILENAME)" "$(PLUGIN_NAME)/"
 	@echo "ZIP archive created at $(ZIP_FILENAME)"
 
-.PHONY: merge_and_archive
+.PHONY: clean merge_and_archive
