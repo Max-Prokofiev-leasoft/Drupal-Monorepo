@@ -4,6 +4,7 @@ namespace Drupal\commerce_ginger\Builder;
 
 use Drupal;
 use Drupal\commerce_ginger\Interface\GetAddressStrategy;
+use Drupal\commerce_ginger\Interface\GetlangCodeStrategy;
 use GingerPluginSdk\Collections\AdditionalAddresses;
 use GingerPluginSdk\Collections\PhoneNumbers;
 use GingerPluginSdk\Entities\Address;
@@ -24,14 +25,14 @@ class CustomerBuilder extends ClientBuilder
 {
 
     /**
-     * @param  object  $billing_info
-     * @param  string  $address_type
+     * @param object $billing_info
+     * @param string $address_type
      *
      * @return \GingerPluginSdk\Entities\Address
      */
     public function getAddress(object $billing_info, string $address_type): Address
     {
-        return ComponentRegister::get(GetAddressStrategy::class)->getAddress($billing_info,$address_type);
+        return ComponentRegister::get(GetAddressStrategy::class)->getAddress($billing_info, $address_type);
     }
 
     /**
@@ -39,11 +40,11 @@ class CustomerBuilder extends ClientBuilder
      */
     public function getLangCode(): string
     {
-        return Drupal::languageManager()->getCurrentLanguage()->getId();
+        return ComponentRegister::get(GetlangCodeStrategy::class)->getLangCode();
     }
 
     /**
-     * @param  object  $payment
+     * @param object $payment
      *
      * @return \GingerPluginSdk\Collections\AdditionalAddresses
      */
@@ -56,9 +57,9 @@ class CustomerBuilder extends ClientBuilder
     }
 
     /**
-     * @param  object  $payment
-     * @param  object|null  $birthdate
-     * @param  string|null  $gender
+     * @param object $payment
+     * @param object|null $birthdate
+     * @param string|null $gender
      *
      * @return \GingerPluginSdk\Entities\Customer
      * @throws \Drupal\Core\TypedData\Exception\MissingDataException
