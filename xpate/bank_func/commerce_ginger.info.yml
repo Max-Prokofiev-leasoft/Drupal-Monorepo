@@ -1,5 +1,5 @@
-name: XPATE Payment Gateway
-description: Provides Commerce integration for the XPATE Gateway.
+name: EMS Payment Gateway
+description: Provides Commerce integration for the EMS Gateway.
 type: module
 
 core_version_requirement: ^9 || ^10
