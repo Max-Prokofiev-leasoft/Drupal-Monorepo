@@ -3,8 +3,12 @@
 namespace Drupal\commerce_ginger\Bankconfig;
 
 use Drupal\commerce_ginger\ComponentRegister;
+use Drupal\commerce_ginger\Interface\GetAddressStrategy;
 use Drupal\commerce_ginger\Interface\GetIssuersStrategy;
+use Drupal\commerce_ginger\Interface\GetlangCodeStrategy;
+use Drupal\commerce_ginger\Strategies\DefaultGetAddress;
 use Drupal\commerce_ginger\Strategies\DefaultGetIssuers;
+use Drupal\commerce_ginger\Strategies\DefaultGetLangCode;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -87,6 +91,10 @@ class Bankconfig
     static public function registerStrategies()
     {
         ComponentRegister::register(GetIssuersStrategy::class,new DefaultGetIssuers());
+        ComponentRegister::register(GetAddressStrategy::class,new DefaultGetAddress());
+        ComponentRegister::register(GetlangCodeStrategy::class,new DefaultGetLangCode());
+
+
     }
 
 }

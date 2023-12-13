@@ -31,10 +31,9 @@ use Drupal\commerce_ginger\Bankconfig\Bankconfig;
 use Drupal\commerce_price\Entity\Currency;
 use Drupal\commerce_ginger\Helper\OrderHelper;
 use Drupal\commerce_ginger\Helper\Helper;
-use Drupal\commerce_ginger\Interface\PaymentMethodFormInterface;
 use GingerPluginSdk\Properties\Amount;
 
-class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements SupportsRefundsInterface, SupportsAuthorizationsInterface, PaymentMethodFormInterface
+class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements SupportsRefundsInterface, SupportsAuthorizationsInterface
 {
     use Drupal\commerce_ginger\RedirectTrait;
 
