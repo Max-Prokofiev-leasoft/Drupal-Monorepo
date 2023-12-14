@@ -8,6 +8,7 @@ use Drupal\commerce_ginger\Interface\GetCustomerDataStrategy;
 use Drupal\commerce_ginger\Interface\GetIssuersStrategy;
 use Drupal\commerce_ginger\Interface\GetlangCodeStrategy;
 use Drupal\commerce_ginger\Interface\PreparePaymentMethodDetailsStrategy;
+use Drupal\commerce_ginger\Strategies\CustomGetAddress;
 use Drupal\commerce_ginger\Strategies\DefaultGetAddress;
 use Drupal\commerce_ginger\Strategies\DefaultGetCustomerData;
 use Drupal\commerce_ginger\Strategies\DefaultGetIssuers;
@@ -95,7 +96,7 @@ class Bankconfig
     static public function registerStrategies()
     {
         ComponentRegister::register(GetIssuersStrategy::class,new DefaultGetIssuers());
-        ComponentRegister::register(GetAddressStrategy::class,new DefaultGetAddress());
+        ComponentRegister::register(GetAddressStrategy::class,new CustomGetAddress());
         ComponentRegister::register(GetlangCodeStrategy::class,new DefaultGetLangCode());
         ComponentRegister::register(PreparePaymentMethodDetailsStrategy::class,new DefaultPreparePaymentMethodDetails());
 
