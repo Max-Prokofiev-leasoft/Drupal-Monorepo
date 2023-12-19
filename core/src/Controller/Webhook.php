@@ -7,7 +7,7 @@ use Drupal\commerce_ginger\Builder\OrderBuilder;
 use Drupal\commerce_ginger\Redefiner\BuilderRedefiner;
 use Drupal\commerce_ginger\Helper\OrderHelper;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use GingerPluginSdk\Client;
 
 class Webhook
@@ -63,7 +63,7 @@ class Webhook
     }
     switch ($status) {
       case 'error':
-        \Drupal::logger(Bankconfig::getLoggerChanel())->error(
+        \Drupal::logger(PSPconfig::getLoggerChanel())->error(
           'Order #'.$payment->getOrderId().' Message:'.(current(
             $apiOrder->toArray()['transactions']
           )['customer_message'] ?? '').' Reason:'.(current(

@@ -2,7 +2,7 @@
 
 namespace Drupal\commerce_ginger\Builder;
 
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Entity\PaymentInterface;
 use GingerPluginSdk\Collections\OrderLines;
@@ -159,10 +159,10 @@ class OrderBuilder extends CustomerBuilder
   {
     return new EntitiesClient(
       $this->getUserAgent(),
-      Bankconfig::getPlatformName(),
+      PSPconfig::getPlatformName(),
       null, // For now no ways to gat platform version were found
-      Bankconfig::getPluginName(),
-      Bankconfig::getPluginVersion()
+      PSPconfig::getPluginName(),
+      PSPconfig::getPluginVersion()
     );
   }
 
@@ -175,9 +175,9 @@ class OrderBuilder extends CustomerBuilder
   {
     return [
       'user_agent' => $this->getUserAgent(),
-      'platform_name' => Bankconfig::getPlatformName(),
-      'plugin_name' => Bankconfig::getPluginName(),
-      'plugin_version' => Bankconfig::getPluginVersion(),
+      'platform_name' => PSPconfig::getPlatformName(),
+      'plugin_name' => PSPconfig::getPluginName(),
+      'plugin_version' => PSPconfig::getPluginVersion(),
     ];
   }
 

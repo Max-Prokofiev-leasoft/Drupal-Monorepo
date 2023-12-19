@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Choose a bank"
+msgid "Choose a PSPs"
 msgstr "Choisissez une banque"
 msgid "Choose gender"
 msgstr "Choisissez le sexe"

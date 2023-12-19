@@ -6,7 +6,7 @@ use Drupal;
 use GingerPluginSdk\Entities\Client as EntitiesClient;
 use GingerPluginSdk\Client;
 use GingerPluginSdk\Properties\ClientOptions;
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
@@ -51,7 +51,7 @@ class ClientBuilder
   {
     return new Client(
       new ClientOptions(
-        endpoint: Bankconfig::getEndpoint(),
+        endpoint: PSPconfig::getEndpoint(),
         useBundle: true,
         apiKey: $this->apiKey
       )

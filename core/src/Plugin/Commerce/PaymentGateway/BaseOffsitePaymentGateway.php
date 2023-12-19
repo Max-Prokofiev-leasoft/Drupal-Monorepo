@@ -27,7 +27,7 @@ use Drupal;
 use Drupal\commerce_ginger\Controller\Webhook;
 use Drupal\commerce_ginger\Redefiner\BuilderRedefiner;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use Drupal\commerce_price\Entity\Currency;
 use Drupal\commerce_ginger\Helper\OrderHelper;
 use Drupal\commerce_ginger\Helper\Helper;
@@ -68,7 +68,7 @@ class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements Sup
         MinorUnitsConverterInterface $minor_units_converter = NULL
     )
     {
-        Bankconfig::registerStrategies();
+        PSPconfig::registerStrategies();
         $this->webhook = new Webhook();
         $this->builderRedefiner = new OrderBuilder();
         $this->helper = new Helper();
@@ -133,7 +133,7 @@ class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements Sup
         try {
             $client->refundOrder($payment->getRemoteId(), new Amount($amount->getNumber() * 100));
         } catch (\Exception $exception) {
-            \Drupal::logger(Bankconfig::getLoggerChanel())->error($exception);
+            \Drupal::logger(PSPconfig::getLoggerChanel())->error($exception);
             if ($exception->getMessage()) {
                 throw  new Drupal\commerce_payment\Exception\PaymentGatewayException($exception->getMessage());
             }
@@ -154,7 +154,7 @@ class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements Sup
         try {
             $client->captureOrderTransaction($payment->getRemoteId());
         } catch (\Exception $exception) {
-            \Drupal::logger(Bankconfig::getLoggerChanel())->error($exception);
+            \Drupal::logger(PSPconfig::getLoggerChanel())->error($exception);
             if ($client->getOrder($payment->getRemoteId())->getStatus() == 'completed') {
                 throw  new Drupal\commerce_payment\Exception\PaymentGatewayException($this->t('Order should be completed'));
             }
@@ -202,7 +202,7 @@ class BaseOffsitePaymentGateway extends OffsitePaymentGatewayBase implements Sup
         try {
             $input = json_decode(file_get_contents("php://input"), true);
         } catch (\Exception $e) {
-            \Drupal::logger(Bankconfig::getLoggerChanel())->error($exception);
+            \Drupal::logger(PSPconfig::getLoggerChanel())->error($exception);
         }
         if (isset($input['order_id'])) {
             $this->webhook->processWebhook($input, $this->entityTypeManager);

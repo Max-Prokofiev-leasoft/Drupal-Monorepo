@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_ginger\Bankconfig;
+namespace Drupal\commerce_ginger\PSP;
 
 use Drupal\commerce_ginger\ComponentRegister;
 use Drupal\commerce_ginger\Interface\GetAddressStrategy;
@@ -16,18 +16,18 @@ use Drupal\commerce_ginger\Strategies\DefaultPreparePaymentMethodDetails;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Bankconfig.
+ * Class PSP.
  *
- * This class contain configs for a bank
+ * This class contain configs for a PSP
  *
  * @package Drupal\commerce_ginger\Builder
  */
-class Bankconfig
+class PSPconfig
 {
 
     const PLATFORM_NAME = 'Drupal10';
 
-    const PLUGIN_NAME = 'BANKNAME-Drupal10';
+    const PLUGIN_NAME = 'EMS-Drupal10';
 
     const ENDPOINT = 'https://api.dev.gingerpayments.com';
 
@@ -39,7 +39,7 @@ class Bankconfig
     public static function getPluginVersion(): mixed
     {
         $pluginInfo = Yaml::parseFile(
-            DRUPAL_ROOT.'/modules/BANKNAME-payment-plugin/commerce_ginger.info.yml'
+            DRUPAL_ROOT.'/modules/EMS-payment-plugin/commerce_ginger.info.yml'
         );
 
         return $pluginInfo['version'] ?? '1.0.0';

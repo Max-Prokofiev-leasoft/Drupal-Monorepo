@@ -16,7 +16,7 @@ use Drupal\user\Entity\User;
 use Drupal\commerce_payment\Entity\PaymentInterface;
 use Drupal\commerce_ginger\Redefiner\BuilderRedefiner;
 use Drupal\commerce_ginger\Helper\Helper;
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use Drupal\commerce_ginger\Controller\OrderController;
 use GingerPluginSdk\Properties\Birthdate;
 

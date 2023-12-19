@@ -1,6 +1,6 @@
 PLUGIN_NAME := BANKNAME-payment-plugin
 CORE_DIR := ../../core
-BANK_FUNC_DIR := ../bank_func
+BANK_FUNC_DIR := ../PSP_func
 BUILD_DIR := ./build
 ZIP_FILENAME := ../../plugin/$(PLUGIN_NAME).zip
 ARCHIVE_DIR := $(BUILD_DIR)/$(PLUGIN_NAME)

@@ -3,7 +3,7 @@
 namespace Drupal\commerce_ginger\Plugin\Commerce\PaymentGateway;
 
 use Drupal;
-use Drupal\commerce_ginger\Bankconfig\Bankconfig;
+use Drupal\commerce_ginger\PSP\PSPconfig;
 use Drupal\commerce_ginger\Plugin\Commerce\PaymentGateway\BaseOffsitePaymentGateway;
 use Drupal\commerce_payment\Entity\PaymentInterface;
 
@@ -42,7 +42,7 @@ class AfterPay extends BaseOffsitePaymentGateway
     $language = Drupal::languageManager()->getCurrentLanguage()->getId();
     $form = $this->helper->setBirthday($form);
     $form = $this->helper->setGender($form);
-    $link = Bankconfig::getAfterPayTermsLink($language);
+    $link = PSPconfig::getAfterPayTermsLink($language);
     $form = $this->helper->setTermsLink($form, $link);
     $form = $this->helper->setDefaultButtons($form);
     return $form;
