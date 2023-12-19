@@ -27,7 +27,7 @@ class Bankconfig
 
     const PLATFORM_NAME = 'Drupal10';
 
-    const PLUGIN_NAME = 'EMS-Drupal10';
+    const PLUGIN_NAME = 'XPATE-Drupal10';
 
     const ENDPOINT = 'https://api.dev.gingerpayments.com';
 
@@ -39,7 +39,7 @@ class Bankconfig
     public static function getPluginVersion(): mixed
     {
         $pluginInfo = Yaml::parseFile(
-            DRUPAL_ROOT.'/modules/EMS-payment-plugin/commerce_ginger.info.yml'
+            DRUPAL_ROOT.'/modules/XPATE-payment-plugin/commerce_ginger.info.yml'
         );
 
         return $pluginInfo['version'] ?? '1.0.0';
