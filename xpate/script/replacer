@@ -1,0 +1,9 @@
+BANK_FUNC_DIR := ../PSP_func
+PSP = BANKNAME
+NEW_PSP = XPATE
+
+replace_psp:
+	@echo "Replacing PSP"
+	find "$(BANK_FUNC_DIR)" -type f -exec perl -pi -e 's/$(PSP)/$(NEW_PSP)/g' {} +
+
+.PHONY: replace_psp
