@@ -1,4 +1,4 @@
-# XPATE plugin for Drupal 9/10 and Commerce 2.x
+# XPATE plugin for Drupal 10 and Commerce 2.x
 
 ## About
 This is the XPATE plugin.
@@ -30,20 +30,13 @@ The ideal online payment page for your webshop:
 
 ## Version number
 
-* Latest version VERSION_HERE
+* Latest version 1.0.0
 
 ## Requirements:
 - PHP v8.x
-- Drupal 9 || 10 and Commerce 2.x
+- Drupal 10 and Commerce 2.x
 
 ## Supported methods ##
 * Apple Pay
-* Bancontact
-* Banktransfer
 * Creditcard
-* iDEAL
-* Klarna Pay Later
-* Klarna Pay Now
 * Google-pay
-* Sofort
-* Paypal
